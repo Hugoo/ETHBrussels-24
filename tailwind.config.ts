@@ -9,6 +9,13 @@ const config = {
     "./src/**/*.{ts,tsx}",
   ],
   prefix: "",
+  safelist: [
+    "bg-purple-300",
+    "bg-blue-300",
+    "bg-blue-600",
+    "bg-pink-300",
+    "bg-red-300",
+  ],
   theme: {
     container: {
       center: true,

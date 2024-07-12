@@ -6,8 +6,9 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
-import { Network } from "@/constants";
+import { Network, NETWORK_CONFIGS } from "@/constants";
 import { generateBlockscoutAddressLink } from "@/services/utils";
+import { ethers } from "ethers";
 
 interface Props {
   network: Network;
@@ -20,11 +21,15 @@ interface Props {
 const NetworkCard: React.FC<Props> = ({ network, balance, address }) => {
   return (
     <div className="w-80">
-      <Card>
+      <Card className={`bg-${NETWORK_CONFIGS[network].color}`}>
         <a href={generateBlockscoutAddressLink(network, address)}>
           <CardHeader>
             <CardDescription>{network}</CardDescription>
-            <CardTitle>{balance}</CardTitle>
+            <CardTitle>
+              {Math.round(parseFloat(ethers.formatEther(balance)) * 10000) /
+                10000}{" "}
+              {NETWORK_CONFIGS[network].symbol}
+            </CardTitle>
           </CardHeader>
         </a>
       </Card>

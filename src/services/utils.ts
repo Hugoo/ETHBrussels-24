@@ -9,6 +9,6 @@ export const generateBlockscoutAddressLink = (
   }
 
   return (
-    BLOCKSCOUT_BASE_URLS[network].replace("api/v2/", "") + "/address/" + address
+    BLOCKSCOUT_BASE_URLS[network].replace("api/v2/", "") + "address/" + address
   );
 };

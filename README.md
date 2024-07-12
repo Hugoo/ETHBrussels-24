@@ -7,6 +7,17 @@ Repo for [ETHBruxelles 2024 hackathon](https://ethglobal.com/events/brussels) pr
 - [Ola](https://github.com/omaliszewska)
 - [Hugo](https://github.com/Hugoo)
 
+## API
+
+Base URL: `/api/`
+
+The backend provides a few APIs merging blockscout responses for each networks into one.
+
+Supported API calls:
+
+- `/addresses/{address}`
+- `/transactions`
+
 ## Built with
 
 - [Blockscout API](https://docs.blockscout.com/for-users/api)

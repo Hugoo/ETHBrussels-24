@@ -1,21 +1,35 @@
+"use client";
+
 import { Network } from "@/constants";
 import NetworkCard from "../NetworkCard/NetworkCard";
+import { useEffect, useState } from "react";
+import { getBlockscoutAddressDetailsForAllNetworks } from "@/services/blockscout";
+import { BlockscoutAddressApiResponse } from "@/types/blockscout/api";
 
 interface Props {
   address: string;
 }
 
 const NetworkCards: React.FC<Props> = ({ address }) => {
-  // TODO: fetch network balances
+  const [details, setDetails] = useState<BlockscoutAddressApiResponse[]>([]);
+
+  useEffect(() => {
+    (async () => {
+      const response = await getBlockscoutAddressDetailsForAllNetworks(address);
+      setDetails(response);
+    })();
+  }, [address]);
 
   return (
-    <div>
-      <NetworkCard network={Network.base} balance="3232$" address={address} />
-      <NetworkCard
-        network={Network.lukso}
-        balance="0.4343$"
-        address={address}
-      />
+    <div className="flex flex-row gap-4">
+      {details.map((detail) => (
+        <NetworkCard
+          key={detail.network}
+          network={detail.network as Network}
+          balance={detail.coin_balance}
+          address={address}
+        />
+      ))}
     </div>
   );
 };
