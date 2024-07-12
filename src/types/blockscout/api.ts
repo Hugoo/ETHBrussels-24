@@ -108,6 +108,9 @@ export interface BlockscoutTransactionApiResponse {
   revert_reason: any;
 
   tx_tag: any;
+
+  // note: this is to make our life easier but this is not existing at this stage
+  network: string;
 }
 
 export interface AddressDetails {

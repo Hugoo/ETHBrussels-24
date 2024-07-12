@@ -43,3 +43,20 @@ export const getLatestBlockscoutTransactions = async (
   const data = await response.json();
   return data as BlockscoutTransactionApiResponseMain;
 };
+
+export const getAddressDetails = async (
+  networkBaseUrl: string,
+  address: string
+): Promise<any> => {
+  const response = await fetch(`${networkBaseUrl}addresses/${address}`, {
+    next: { revalidate: 10 },
+  });
+
+  if (!response.ok) {
+    throw new Error("Network response was not ok");
+  }
+
+  const data = await response.json();
+  console.log(JSON.stringify(data, null, 2));
+  // return data as BlockscoutTransactionApiResponseMain;
+};
