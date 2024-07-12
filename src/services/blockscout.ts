@@ -1,5 +1,50 @@
 import { BLOCKSCOUT_BASE_URLS } from "@/constants";
-import { BlockscoutTransactionApiResponseMain } from "@/types/blockscout/api";
+import {
+  BlockscoutAddressApiResponse,
+  BlockscoutTransactionApiResponseMain,
+} from "@/types/blockscout/api";
+
+export const getBlockscoutAddressDetailsForAllNetworks = async (
+  address: string
+) => {
+  let networksDetails: BlockscoutAddressApiResponse[] = [];
+
+  const networks = Object.keys(BLOCKSCOUT_BASE_URLS);
+
+  for (const network of networks) {
+    const details = await getAddressDetails(
+      // @ts-ignore
+      BLOCKSCOUT_BASE_URLS[network],
+      address
+    );
+
+    if (details) {
+      networksDetails.push({ ...details, network });
+    }
+  }
+
+  return networksDetails;
+};
+
+export const getAddressDetails = async (
+  networkBaseUrl: string,
+  address: string
+): Promise<BlockscoutAddressApiResponse | null> => {
+  const response = await fetch(`${networkBaseUrl}addresses/${address}`, {
+    next: { revalidate: 10 },
+  });
+
+  console.log(address);
+
+  if (!response.ok) {
+    return null;
+  }
+
+  const data = await response.json();
+  console.log(data);
+  return data as BlockscoutAddressApiResponse;
+};
+//
 
 export const getLatestBlockscoutTransactionsForAllNetworks = async () => {
   let transactions = [];
@@ -42,21 +87,4 @@ export const getLatestBlockscoutTransactions = async (
 
   const data = await response.json();
   return data as BlockscoutTransactionApiResponseMain;
-};
-
-export const getAddressDetails = async (
-  networkBaseUrl: string,
-  address: string
-): Promise<any> => {
-  const response = await fetch(`${networkBaseUrl}addresses/${address}`, {
-    next: { revalidate: 10 },
-  });
-
-  if (!response.ok) {
-    throw new Error("Network response was not ok");
-  }
-
-  const data = await response.json();
-  console.log(JSON.stringify(data, null, 2));
-  // return data as BlockscoutTransactionApiResponseMain;
 };

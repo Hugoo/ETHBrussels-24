@@ -166,4 +166,7 @@ export interface BlockscoutAddressApiResponse {
   token: null;
   watchlist_address_id: null;
   watchlist_names: any[];
+
+  // not in the API but makes our life easier for now
+  network: string;
 }
