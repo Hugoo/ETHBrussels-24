@@ -1,4 +1,4 @@
-import { BLOCKSCOUT_BASE_URLS } from "@/constants";
+import { BLOCKSCOUT_BASE_URLS, Network } from "@/constants";
 import {
   BlockscoutAddressApiResponse,
   BlockscoutTransactionApiResponse,
@@ -10,7 +10,7 @@ export const getBlockscoutAddressDetailsForAllNetworks = async (
 ) => {
   let networksDetails: BlockscoutAddressApiResponse[] = [];
 
-  const networks = Object.keys(BLOCKSCOUT_BASE_URLS);
+  const networks = Object.keys(BLOCKSCOUT_BASE_URLS) as Network[];
 
   for (const network of networks) {
     const details = await getAddressDetails(
@@ -50,7 +50,7 @@ export const getBlockscoutAddressTransactionsForAllNetworks = async (
 ) => {
   let transactions: BlockscoutTransactionApiResponse[] = [];
 
-  const networks = Object.keys(BLOCKSCOUT_BASE_URLS);
+  const networks = Object.keys(BLOCKSCOUT_BASE_URLS) as Network[];
 
   for (const network of networks) {
     const txs = await getAddressTransactions(

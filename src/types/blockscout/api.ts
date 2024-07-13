@@ -1,3 +1,5 @@
+import { Network } from "@/constants";
+
 export interface BlockscoutTransactionApiResponseMain {
   next_page_params: BlockscoutNextPageParams;
   items: BlockscoutTransactionApiResponse[];
@@ -110,7 +112,7 @@ export interface BlockscoutTransactionApiResponse {
   tx_tag: any;
 
   // note: this is to make our life easier but this is not existing at this stage
-  network: string;
+  network: Network;
 }
 
 export interface AddressDetails {
@@ -168,5 +170,5 @@ export interface BlockscoutAddressApiResponse {
   watchlist_names: any[];
 
   // not in the API but makes our life easier for now
-  network: string;
+  network: Network;
 }
