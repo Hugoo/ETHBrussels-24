@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import Link from "next/link";
 
 import {
@@ -11,31 +10,17 @@ import {
   TableRow,
 } from "@/components/ui/table";
 
-import { getLatestBlockscoutTransactionsForAllNetworks } from "@/services/blockscout";
 import { generateBlockscoutTransactionLink } from "@/services/utils";
 import { BlockscoutTransactionApiResponse } from "@/types/blockscout/api";
 import { Network } from "@/constants";
-import Heading from "../Heading";
 
-const TransactionsList: React.FC = () => {
-  const [transactions, setTransactions] = useState<
-    BlockscoutTransactionApiResponse[]
-  >([]);
+interface Props {
+  transactions: BlockscoutTransactionApiResponse[];
+}
 
-  useEffect(() => {
-    (async () => {
-      const txs = await getLatestBlockscoutTransactionsForAllNetworks();
-
-      setTransactions(txs);
-    })();
-  }, []);
-
+const TransactionsList: React.FC<Props> = ({ transactions }) => {
   return (
     <div>
-      <Heading level={1}>
-        Latest Transactions - <i>on many chains ✨</i>
-      </Heading>
-
       <Table>
         <TableCaption>A list of recent transactions.</TableCaption>
         <TableHeader>

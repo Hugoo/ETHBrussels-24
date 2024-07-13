@@ -6,6 +6,7 @@ import { useEffect } from "react";
 import NetworkCards from "@/components/NetworkCards";
 import { BLOCKSCOUT_BASE_URLS } from "@/constants";
 import { getAddressDetails } from "@/services/blockscout";
+import Heading from "@/components/Heading";
 
 interface Props {
   address: string;
@@ -29,11 +30,11 @@ const AddressPageBody: React.FC<Props> = ({ address }) => {
 
   return (
     <div>
-      <h1 className="text-h1">Address</h1>
+      <Heading level={1}>Address</Heading>
       <p>{address}</p>
-      <h2 className="text-h2">Stats</h2>
+      <Heading level={2}>Stats</Heading>
       <NetworkCards address={address} />
-      <h2 className="text-h2">Transactions</h2>
+      <Heading level={2}>Transactions</Heading>
       <p>TODO: add transaction table</p>
     </div>
   );

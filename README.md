@@ -15,12 +15,14 @@ The backend provides a few APIs merging blockscout responses for each networks i
 
 Supported API calls:
 
-- `/addresses/{address}`
-- `/transactions`
+- `GET /addresses/{address}`
+- `GET /addresses/{address}/transactions`
+- `GET /transactions`
 
 ## Improvements
 
 - Improve cache and loading by using Tanstack Query
+- Allow users to select specific networks when querying APIs
 
 ## Built with
 

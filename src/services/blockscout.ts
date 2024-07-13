@@ -1,6 +1,7 @@
 import { BLOCKSCOUT_BASE_URLS } from "@/constants";
 import {
   BlockscoutAddressApiResponse,
+  BlockscoutTransactionApiResponse,
   BlockscoutTransactionApiResponseMain,
 } from "@/types/blockscout/api";
 
@@ -34,8 +35,6 @@ export const getAddressDetails = async (
     next: { revalidate: 10 },
   });
 
-  console.log(address);
-
   if (!response.ok) {
     return null;
   }
@@ -44,6 +43,54 @@ export const getAddressDetails = async (
   console.log(data);
   return data as BlockscoutAddressApiResponse;
 };
+
+//
+
+export const getBlockscoutAddressTransactionsForAllNetworks = async (
+  address: string
+) => {
+  let transactions: BlockscoutTransactionApiResponse[] = [];
+
+  const networks = Object.keys(BLOCKSCOUT_BASE_URLS);
+
+  for (const network of networks) {
+    const details = await getAddressTransactions(
+      // @ts-ignore
+      BLOCKSCOUT_BASE_URLS[network],
+      address
+    );
+
+    if (details) {
+      transactions.push({ ...details, network });
+    }
+  }
+
+  transactions.sort((a, b) => {
+    return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
+  });
+
+  return transactions;
+};
+
+export const getAddressTransactions = async (
+  networkBaseUrl: string,
+  address: string
+): Promise<BlockscoutTransactionApiResponse | null> => {
+  const response = await fetch(
+    `${networkBaseUrl}addresses/${address}/transactions`,
+    {
+      next: { revalidate: 10 },
+    }
+  );
+
+  if (!response.ok) {
+    return null;
+  }
+
+  const data = await response.json();
+  return data as BlockscoutTransactionApiResponse;
+};
+
 //
 
 export const getLatestBlockscoutTransactionsForAllNetworks = async () => {
@@ -58,7 +105,6 @@ export const getLatestBlockscoutTransactionsForAllNetworks = async () => {
     transactions.push(...response.items.map((item) => ({ ...item, network })));
   }
 
-  // TODO: check if correct
   transactions.sort((a, b) => {
     return new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime();
   });
@@ -75,7 +121,7 @@ export const getLatestBlockscoutTransactions = async (
   const response = await fetch(
     `${networkBaseUrl}transactions?filter=validated${
       blockNumber ? `&block_number=${blockNumber}` : ""
-    }${index ? `&index=${index}` : ""}&items_count=${itemsCount || "50"}`,
+    }${index ? `&index=${index}` : ""}&items_count=${itemsCount || "10"}`,
     {
       next: { revalidate: 10 },
     }
