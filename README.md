@@ -1,4 +1,4 @@
-# ETHBruxelles 2024
+# PolyScout 🔗 - ETHBrussels 2024
 
 Repo for [ETHBruxelles 2024 hackathon](https://ethglobal.com/events/brussels) project.
 
