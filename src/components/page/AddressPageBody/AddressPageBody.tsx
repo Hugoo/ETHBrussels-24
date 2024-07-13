@@ -1,21 +1,33 @@
 "use client";
 
 import { isAddress } from "ethers";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import NetworkCards from "@/components/NetworkCards";
 import { BLOCKSCOUT_BASE_URLS } from "@/constants";
-import { getAddressDetails } from "@/services/blockscout";
+import {
+  getAddressDetails,
+  getBlockscoutAddressTransactionsForAllNetworks,
+} from "@/services/blockscout";
 import Heading from "@/components/Heading";
+import { Transaction } from "ethers";
+import TransactionsList from "@/components/TransactionsList";
+import { BlockscoutTransactionApiResponse } from "@/types/blockscout/api";
 
 interface Props {
   address: string;
 }
 
 const AddressPageBody: React.FC<Props> = ({ address }) => {
+  const [transactions, setTransactions] = useState<
+    BlockscoutTransactionApiResponse[]
+  >([]);
+
   useEffect(() => {
     (async () => {
-      getAddressDetails(BLOCKSCOUT_BASE_URLS.lukso, address);
+      getBlockscoutAddressTransactionsForAllNetworks(address).then((data) => {
+        setTransactions(data);
+      });
     })();
   }, []);
 
@@ -35,7 +47,7 @@ const AddressPageBody: React.FC<Props> = ({ address }) => {
       <Heading level={2}>Stats</Heading>
       <NetworkCards address={address} />
       <Heading level={2}>Transactions</Heading>
-      <p>TODO: add transaction table</p>
+      <TransactionsList transactions={transactions} />
     </div>
   );
 };

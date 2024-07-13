@@ -54,14 +54,16 @@ export const getBlockscoutAddressTransactionsForAllNetworks = async (
   const networks = Object.keys(BLOCKSCOUT_BASE_URLS);
 
   for (const network of networks) {
-    const details = await getAddressTransactions(
+    const txs = await getAddressTransactions(
       // @ts-ignore
       BLOCKSCOUT_BASE_URLS[network],
       address
     );
 
-    if (details) {
-      transactions.push({ ...details, network });
+    if (txs) {
+      for (const tx of txs) {
+        transactions.push({ ...tx, network });
+      }
     }
   }
 
@@ -75,7 +77,7 @@ export const getBlockscoutAddressTransactionsForAllNetworks = async (
 export const getAddressTransactions = async (
   networkBaseUrl: string,
   address: string
-): Promise<BlockscoutTransactionApiResponse | null> => {
+): Promise<BlockscoutTransactionApiResponse[] | null> => {
   const response = await fetch(
     `${networkBaseUrl}addresses/${address}/transactions`,
     {
@@ -88,7 +90,7 @@ export const getAddressTransactions = async (
   }
 
   const data = await response.json();
-  return data as BlockscoutTransactionApiResponse;
+  return data.items as BlockscoutTransactionApiResponse[];
 };
 
 //
