@@ -9,7 +9,7 @@ export default function Home() {
       <p>
         PolyScout is an attempt to demonstrate the versatility of the Blockscout
         API across multiple networks, supported by the ENS protocol. This
-        project was buitt in 24h during ETHBrussels 2024.
+        project was built in 24h during ETHBrussels 2024.
       </p>
       <div className="flex items-center justify-center h-96">
         <AddressInput />
