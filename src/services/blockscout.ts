@@ -40,7 +40,6 @@ export const getAddressDetails = async (
   }
 
   const data = await response.json();
-  console.log(data);
   return data as BlockscoutAddressApiResponse;
 };
 
@@ -112,8 +111,6 @@ export const getLatestBlockscoutTransactionsForAllNetworks = async () => {
   }
 
   const responses = await Promise.all(promises);
-
-  console.log(responses);
 
   let i = 0;
   for (const network of networks) {

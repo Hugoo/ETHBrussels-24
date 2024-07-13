@@ -13,6 +13,7 @@ import {
 import { generateBlockscoutTransactionLink } from "@/services/utils";
 import { BlockscoutTransactionApiResponse } from "@/types/blockscout/api";
 import { Network } from "@/constants";
+import AddressFormat from "../AddressFormat";
 
 interface Props {
   transactions: BlockscoutTransactionApiResponse[];
@@ -36,7 +37,7 @@ const TransactionsList: React.FC<Props> = ({ transactions }) => {
               <TableCell className="font-medium">{tx.network}</TableCell>
               <TableCell>
                 <Link href={`/address/${tx.from.hash}`} target="_blank">
-                  <code>{tx.from.hash}</code>
+                  <AddressFormat address={tx.from.hash} />
                 </Link>
               </TableCell>
               <TableCell>{tx.status}</TableCell>
