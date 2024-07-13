@@ -15,16 +15,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-        <header>
-          <div className="relative mx-auto max-w-screen-xl px-4 py-2 sm:px-6 sm:py-4 lg:px-8 bg-blue-300">
+      <body className="text-gray-800">
+        <header className="bg-blue-300">
+          <div className="mx-auto max-w-screen-xl px-4 py-2 sm:px-6 sm:py-4 lg:px-8">
             <div className="flex items-center justify-center">
-              <div className="grow text-center">
-                <h1 className="text-3xl font-bold text-lukso-fuschia hover:text-pink-700">
-                  <Link href="/">PolyScout 🔗</Link>
+              <div className="grow text-left">
+                <h1 className="text-3xl font-bold">
+                  <Link className="hover:text-gray-500" href="/">
+                    PolyScout 🔗
+                  </Link>
                 </h1>
               </div>
-              <div className="text-left text-gray-400">-</div>
+              <div className="text-lef">
+                <Link className="hover:text-gray-500" href="/transactions">
+                  Transactions
+                </Link>
+              </div>
             </div>
           </div>
         </header>
