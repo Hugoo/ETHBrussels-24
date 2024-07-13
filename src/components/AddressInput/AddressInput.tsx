@@ -37,7 +37,7 @@ const AddressInput: React.FC = () => {
 
   return (
     <form
-      className="flex flex-col w-full max-w-lg items-center space-x-2"
+      className="flex flex-col w-full items-center space-x-2"
       onSubmit={handleSubmit}
     >
       <Input
