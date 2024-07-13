@@ -4,6 +4,8 @@ Repo for [ETHBruxelles 2024 hackathon](https://ethglobal.com/events/brussels) pr
 
 Live URL: <https://polyscout.vercel.app>
 
+ETHGlobal project: <https://ethglobal.com/showcase/polyscout-en58q>
+
 ## Team
 
 - [Ola](https://github.com/omaliszewska)
