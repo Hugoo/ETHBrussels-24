@@ -96,15 +96,31 @@ export const getAddressTransactions = async (
 //
 
 export const getLatestBlockscoutTransactionsForAllNetworks = async () => {
+  // @ts-ignore
   let transactions = [];
   const networks = Object.keys(BLOCKSCOUT_BASE_URLS);
 
+  const promises = [];
+
   for (const network of networks) {
-    const response = await getLatestBlockscoutTransactions(
-      // @ts-ignore
-      BLOCKSCOUT_BASE_URLS[network]
+    promises.push(
+      getLatestBlockscoutTransactions(
+        // @ts-ignore
+        BLOCKSCOUT_BASE_URLS[network]
+      )
     );
-    transactions.push(...response.items.map((item) => ({ ...item, network })));
+  }
+
+  const responses = await Promise.all(promises);
+
+  console.log(responses);
+
+  let i = 0;
+  for (const network of networks) {
+    transactions.push(
+      ...responses[i].items.map((item) => ({ ...item, network }))
+    );
+    i++;
   }
 
   transactions.sort((a, b) => {

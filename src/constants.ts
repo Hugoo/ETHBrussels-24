@@ -3,7 +3,7 @@ export enum Network {
   base = "base",
   lukso = "lukso",
   optimism = "optimism",
-  zora = "zora",
+  // zora = "zora",
 }
 
 export const NETWORK_CONFIGS: Record<
@@ -12,7 +12,7 @@ export const NETWORK_CONFIGS: Record<
 > = {
   // NOTE: don't forget to add colors to tailwind safelist
   // not the best... but it works for now
-  [Network.zora]: { color: "purple-300", symbol: "ETH" },
+  // [Network.zora]: { color: "purple-300", symbol: "ETH" },
   [Network.ethereum]: { color: "blue-300", symbol: "ETH" },
   [Network.base]: { color: "blue-600", symbol: "ETH" },
   [Network.lukso]: { color: "pink-300", symbol: "LYX" },
@@ -20,7 +20,7 @@ export const NETWORK_CONFIGS: Record<
 };
 
 export const BLOCKSCOUT_BASE_URLS: Record<Network, string> = {
-  [Network.zora]: "https://explorer.zora.energy/api/v2/",
+  // [Network.zora]: "https://explorer.zora.energy/api/v2/",
   [Network.ethereum]: "https://eth.blockscout.com/api/v2/",
   [Network.base]: "https://base.blockscout.com/api/v2/",
   [Network.lukso]: "https://explorer.execution.mainnet.lukso.network/api/v2/",
