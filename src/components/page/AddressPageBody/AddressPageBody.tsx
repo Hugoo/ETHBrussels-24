@@ -41,7 +41,6 @@ const AddressPageBody: React.FC<Props> = ({ address }) => {
   return (
     <div>
       <Profile address={address as any} />
-      <Heading level={2}>Stats</Heading>
       <NetworkCards address={address} />
       <Heading level={2}>Latest Multi Chains Transactions</Heading>
       {isLoading ? (

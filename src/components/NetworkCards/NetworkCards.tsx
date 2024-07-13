@@ -21,7 +21,7 @@ const NetworkCards: React.FC<Props> = ({ address }) => {
   }, [address]);
 
   return (
-    <div className="flex flex-row gap-4">
+    <div className="my-6 flex flex-row gap-4">
       {details.map((detail) => (
         <NetworkCard
           key={detail.network}
