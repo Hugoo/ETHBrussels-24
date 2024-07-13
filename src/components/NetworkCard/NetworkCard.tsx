@@ -27,7 +27,7 @@ const NetworkCard: React.FC<Props> = ({ network, balance, address }) => {
             <CardDescription>{network}</CardDescription>
             <CardTitle>
               {Math.round(
-                parseFloat(ethers.formatEther(balance || "")) * 10000
+                parseFloat(ethers.formatEther(balance || "0")) * 10000
               ) / 10000}{" "}
               {NETWORK_CONFIGS[network].symbol}
             </CardTitle>

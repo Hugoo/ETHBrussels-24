@@ -8,6 +8,7 @@ import { getBlockscoutAddressTransactionsForAllNetworks } from "@/services/block
 import Heading from "@/components/Heading";
 import TransactionsList from "@/components/TransactionsList";
 import { BlockscoutTransactionApiResponse } from "@/types/blockscout/api";
+import Profile from "@/components/Profile";
 
 interface Props {
   address: string;
@@ -39,8 +40,7 @@ const AddressPageBody: React.FC<Props> = ({ address }) => {
 
   return (
     <div>
-      <Heading level={1}>Address</Heading>
-      <p>{address}</p>
+      <Profile address={address as any} />
       <Heading level={2}>Stats</Heading>
       <NetworkCards address={address} />
       <Heading level={2}>Latest Multi Chains Transactions</Heading>

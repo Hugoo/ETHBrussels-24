@@ -39,3 +39,9 @@ Supported API calls:
 
 1. The copy button in the ENS docs on docs pages (like [this one](https://docs.ens.domains/web/quickstart)) doesn't work, the copied text is "undefined".
 2. The code snippet on [this page](https://docs.ens.domains/web/quickstart) relies on a "ens-core" import that I couldn't find/install.
+3. On that same previous page, if you reuse the code snippet, you will get the following error:
+
+```
+Type 'GetEnsNameReturnType | undefined' is not assignable to type 'string | undefined'.
+  Type 'null' is not assignable to type 'string | undefined'
+```

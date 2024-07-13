@@ -1,20 +1,23 @@
 import { useAccount, useEnsName, useEnsAvatar } from "wagmi";
 
-const Profile: React.FC = () => {
-  const { address } = useAccount();
+interface Props {
+  address: `0x${string}`;
+}
+
+const Profile: React.FC<Props> = ({ address }) => {
   const { data: name } = useEnsName({ address });
-  //   const { data: avatar } = useEnsAvatar({ name });
+  // const { data: avatar } = useEnsAvatar({ name });
 
   return (
     <div className="flex items-center gap-2">
       <img
         alt="avatar"
-        src={avatar || "https://docs.ens.domains/fallback.svg"}
+        src={"https://docs.ens.domains/fallback.svg"}
         className="w-8 h-8 rounded-full"
       />
-      <div className="flex flex-col gap-0 leading-3 pr-10">
+      <div className="flex flex-col gap-0 text-h2 leading-3 pr-10">
         {name && <span className="font-bold">{name}</span>}
-        {/* <span>{formatAddress(address)}</span> */}
+        {!name && <span>{address}</span>}
       </div>
     </div>
   );

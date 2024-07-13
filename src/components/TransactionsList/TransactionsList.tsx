@@ -22,7 +22,6 @@ const TransactionsList: React.FC<Props> = ({ transactions }) => {
   return (
     <div>
       <Table>
-        <TableCaption>A list of recent transactions.</TableCaption>
         <TableHeader>
           <TableRow>
             <TableHead className="w-[100px]">Network</TableHead>
