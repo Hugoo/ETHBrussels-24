@@ -10,15 +10,20 @@
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.0",
+    "@tanstack/react-query": "^5.51.1",
     "class-variance-authority": "^0.7.0",
     "clsx": "^2.1.1",
+    "encoding": "^0.1.13",
     "ethers": "^6.13.1",
     "lucide-react": "^0.408.0",
     "next": "14.2.5",
+    "pino-pretty": "^11.2.1",
     "react": "^18",
     "react-dom": "^18",
     "tailwind-merge": "^2.4.0",
-    "tailwindcss-animate": "^1.0.7"
+    "tailwindcss-animate": "^1.0.7",
+    "viem": "^2.17.3",
+    "wagmi": "^2.10.10"
   },
   "devDependencies": {
     "@types/node": "^20",

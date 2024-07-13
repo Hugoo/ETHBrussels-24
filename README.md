@@ -32,3 +32,10 @@ Supported API calls:
 - [Ethers.js](https://docs.ethers.org/v6/)
 - [Next.js](https://nextjs.org/)
 - [shadcn/ui](https://ui.shadcn.com/)
+
+## Feedback
+
+### ENS
+
+1. The copy button in the ENS docs on docs pages (like [this one](https://docs.ens.domains/web/quickstart)) doesn't work, the copied text is "undefined".
+2. The code snippet on [this page](https://docs.ens.domains/web/quickstart) relies on a "ens-core" import that I couldn't find/install.
