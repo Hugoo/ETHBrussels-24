@@ -10,12 +10,14 @@ export default function Home() {
   const [transactions, setTransactions] = useState<
     BlockscoutTransactionApiResponse[]
   >([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     (async () => {
       const txs = await getLatestBlockscoutTransactionsForAllNetworks();
 
       setTransactions(txs);
+      setIsLoading(false);
     })();
   }, []);
 
@@ -24,7 +26,11 @@ export default function Home() {
       <Heading level={1}>
         Latest Transactions - <i>on many chains ✨</i>
       </Heading>
-      <TransactionsList transactions={transactions} />
+      {isLoading ? (
+        <p className="text-center text-3xl">Loading...</p>
+      ) : (
+        <TransactionsList transactions={transactions} />
+      )}
     </>
   );
 }

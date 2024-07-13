@@ -12,7 +12,7 @@ import { ethers } from "ethers";
 
 interface Props {
   network: Network;
-  balance: string;
+  balance: string | null;
   address: string;
 }
 
@@ -26,8 +26,9 @@ const NetworkCard: React.FC<Props> = ({ network, balance, address }) => {
           <CardHeader>
             <CardDescription>{network}</CardDescription>
             <CardTitle>
-              {Math.round(parseFloat(ethers.formatEther(balance)) * 10000) /
-                10000}{" "}
+              {Math.round(
+                parseFloat(ethers.formatEther(balance || "")) * 10000
+              ) / 10000}{" "}
               {NETWORK_CONFIGS[network].symbol}
             </CardTitle>
           </CardHeader>
