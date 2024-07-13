@@ -11,7 +11,7 @@ Live URL: <https://polyscout.vercel.app>
 
 ## API
 
-Base URL: `/api/`
+Base URL: `https://polyscout.vercel.app/api/`
 
 The backend provides a few APIs merging blockscout responses for each networks into one.
 

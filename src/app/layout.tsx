@@ -29,7 +29,14 @@ export default function RootLayout({
               <div className="text-lef">
                 <Link className="hover:text-gray-500" href="/transactions">
                   Transactions
-                </Link>
+                </Link>{" "}
+                -{" "}
+                <a
+                  className="hover:text-gray-500"
+                  href="https://github.com/Hugoo/ETHBrussels-24?tab=readme-ov-file#api"
+                >
+                  API
+                </a>
               </div>
             </div>
           </div>
