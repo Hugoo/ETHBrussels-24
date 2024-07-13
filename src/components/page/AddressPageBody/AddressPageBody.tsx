@@ -4,13 +4,8 @@ import { isAddress } from "ethers";
 import { useEffect, useState } from "react";
 
 import NetworkCards from "@/components/NetworkCards";
-import { BLOCKSCOUT_BASE_URLS } from "@/constants";
-import {
-  getAddressDetails,
-  getBlockscoutAddressTransactionsForAllNetworks,
-} from "@/services/blockscout";
+import { getBlockscoutAddressTransactionsForAllNetworks } from "@/services/blockscout";
 import Heading from "@/components/Heading";
-import { Transaction } from "ethers";
 import TransactionsList from "@/components/TransactionsList";
 import { BlockscoutTransactionApiResponse } from "@/types/blockscout/api";
 
@@ -46,7 +41,7 @@ const AddressPageBody: React.FC<Props> = ({ address }) => {
       <p>{address}</p>
       <Heading level={2}>Stats</Heading>
       <NetworkCards address={address} />
-      <Heading level={2}>Transactions</Heading>
+      <Heading level={2}>Latest Multi Chains Transactions</Heading>
       <TransactionsList transactions={transactions} />
     </div>
   );

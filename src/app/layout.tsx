@@ -45,6 +45,10 @@ export default function RootLayout({
                 <a className="hover:underline" href="https://x.com/HugoApps">
                   @HugoApps
                 </a>{" "}
+                with{" "}
+                <a href="https://docs.blockscout.com/for-users/api">
+                  Blockscout API
+                </a>
                 &mdash;{" "}
                 <a
                   className="hover:underline"
