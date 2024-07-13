@@ -97,7 +97,7 @@ export const getAddressTransactions = async (
 export const getLatestBlockscoutTransactionsForAllNetworks = async () => {
   // @ts-ignore
   let transactions = [];
-  const networks = Object.keys(BLOCKSCOUT_BASE_URLS);
+  const networks = Object.keys(BLOCKSCOUT_BASE_URLS) as Network[];
 
   const promises = [];
 

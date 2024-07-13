@@ -21,6 +21,20 @@ Supported API calls:
 - `GET /addresses/{address}/transactions`
 - `GET /transactions`
 
+## Architecture
+
+```mermaid
+flowchart LR
+  B1[Blockscout Ethereum] --> P{PolyScout\n Merge }
+  B2[Blockscout Optimism] --> P
+  B3[Blockscout LUKSO] --> P
+  B4[Blockscout Base] --> P
+  BN[Blockscout Network N...] --> P
+  P -- Yes --> C[Multichain API 😇]
+```
+
+Source: [`src/services/blockscout.ts`](./src/services/blockscout.ts)
+
 ## Improvements
 
 - Improve cache and loading by using Tanstack Query
