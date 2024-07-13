@@ -46,6 +46,8 @@ Source: [`src/services/blockscout.ts`](./src/services/blockscout.ts)
 - [Ethers.js](https://docs.ethers.org/v6/)
 - [Next.js](https://nextjs.org/)
 - [shadcn/ui](https://ui.shadcn.com/)
+- [ENS](https://ens.domains/)
+- [enstate.rs](https://enstate.rs/docs)
 
 ## Feedback
 

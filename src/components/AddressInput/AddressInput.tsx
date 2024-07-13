@@ -1,15 +1,37 @@
-import { Button } from "@/components/ui/button";
-import { Input } from "@/components/ui/input";
 import { isAddress } from "ethers";
 import { useState } from "react";
 
-const AddressInput: React.FC = () => {
-  const [address, setAddress] = useState<string>("");
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { getEnsAddress } from "@/services/enstate";
 
-  const handleSubmit = (e: any) => {
+const AddressInput: React.FC = () => {
+  const [addressOrEns, setAddressOrEns] = useState<string>("");
+  const [status, setStatus] = useState<string>("");
+  const [error, setError] = useState<string>("");
+
+  const handleSubmit = async (e: any) => {
     e.preventDefault();
-    if (isAddress(address)) {
+
+    if (error) {
+      window.location.href = `https://app.ens.domains/${addressOrEns}`;
+    }
+
+    setError("");
+    if (isAddress(addressOrEns)) {
+      window.location.href = `/address/${addressOrEns}`;
+    }
+
+    try {
+      setStatus("Looking up ENS address...");
+      const address = await getEnsAddress(addressOrEns);
+
       window.location.href = `/address/${address}`;
+    } catch (e) {
+      // not valid ENS
+      setStatus("");
+      setError("Invalid address or ENS name");
+      console.error(e);
     }
   };
 
@@ -19,9 +41,10 @@ const AddressInput: React.FC = () => {
       onSubmit={handleSubmit}
     >
       <Input
-        value={address}
+        value={addressOrEns}
         onChange={(e) => {
-          setAddress(e.target.value);
+          setError("");
+          setAddressOrEns(e.target.value);
         }}
         data-form-type="other"
         data-1p-ignore
@@ -30,8 +53,12 @@ const AddressInput: React.FC = () => {
       />
       <br />
       <Button onClick={handleSubmit} type="submit">
-        Lookup
+        {error ? "Get this ENS" : "Lookup"}
       </Button>
+      <div className="pt-5">
+        <span className="text-slate-400">{status}</span>
+        <span className="text-red-400">{error}</span>
+      </div>
     </form>
   );
 };
