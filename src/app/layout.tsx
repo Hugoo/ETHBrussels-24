@@ -59,7 +59,10 @@ export default function RootLayout({
                   @HugoApps
                 </a>{" "}
                 with{" "}
-                <a href="https://docs.blockscout.com/for-users/api">
+                <a
+                  className="hover:underline"
+                  href="https://docs.blockscout.com/for-users/api"
+                >
                   Blockscout API
                 </a>{" "}
                 &mdash;{" "}
@@ -67,7 +70,7 @@ export default function RootLayout({
                   className="hover:underline"
                   href="https://github.com/Hugoo/ETHBrussels-24"
                 >
-                  Source
+                  GitHub
                 </a>
               </p>
             </div>

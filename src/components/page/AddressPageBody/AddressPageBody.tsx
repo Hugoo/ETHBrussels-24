@@ -17,11 +17,13 @@ const AddressPageBody: React.FC<Props> = ({ address }) => {
   const [transactions, setTransactions] = useState<
     BlockscoutTransactionApiResponse[]
   >([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
 
   useEffect(() => {
     (async () => {
       getBlockscoutAddressTransactionsForAllNetworks(address).then((data) => {
         setTransactions(data);
+        setIsLoading(false);
       });
     })();
   }, []);
@@ -42,7 +44,11 @@ const AddressPageBody: React.FC<Props> = ({ address }) => {
       <Heading level={2}>Stats</Heading>
       <NetworkCards address={address} />
       <Heading level={2}>Latest Multi Chains Transactions</Heading>
-      <TransactionsList transactions={transactions} />
+      {isLoading ? (
+        "Loading..."
+      ) : (
+        <TransactionsList transactions={transactions} />
+      )}
     </div>
   );
 };
