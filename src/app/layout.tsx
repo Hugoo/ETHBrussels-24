@@ -22,23 +22,23 @@ export default function RootLayout({
     <html lang="en">
       <body className="text-gray-800">
         <Providers cookie={cookie}>
-          <header className="bg-blue-300">
+          <header className="bg-blue-300 text-white">
             <div className="mx-auto max-w-screen-xl px-4 py-2 sm:px-6 sm:py-4 lg:px-8">
               <div className="flex items-center justify-center">
                 <div className="grow text-left">
                   <h1 className="text-3xl font-bold">
-                    <Link className="hover:text-gray-500" href="/">
+                    <Link className="hover:text-gray-300" href="/">
                       PolyScout 🔗
                     </Link>
                   </h1>
                 </div>
                 <div className="text-lef">
-                  <Link className="hover:text-gray-500" href="/transactions">
+                  <Link className="hover:text-gray-300" href="/transactions">
                     Transactions
                   </Link>{" "}
                   -{" "}
                   <a
-                    className="hover:text-gray-500"
+                    className="hover:text-gray-300"
                     href="https://github.com/Hugoo/ETHBrussels-24?tab=readme-ov-file#api"
                   >
                     API
@@ -50,7 +50,7 @@ export default function RootLayout({
           <main className="mx-auto max-w-screen-xl px-4 py-2 sm:px-6 sm:py-4 lg:px-8">
             {children}
           </main>
-          <footer className="bg-white">
+          <footer className="bg-[#F8F7F4]">
             <div className="mx-auto max-w-screen-xl px-4 pb-8 pt-12 sm:px-6 lg:px-8">
               <div className="mt-16 border-t border-gray-100 pt-8">
                 <p className="text-center text-xs/relaxed text-gray-500">
@@ -71,7 +71,7 @@ export default function RootLayout({
                   >
                     Blockscout API
                   </a>{" "}
-                  &mdash;{" "}
+                  and ENS &mdash;{" "}
                   <a
                     className="hover:underline"
                     href="https://github.com/Hugoo/ETHBrussels-24"

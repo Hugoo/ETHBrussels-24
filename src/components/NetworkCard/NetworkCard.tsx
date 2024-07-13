@@ -24,7 +24,7 @@ const NetworkCard: React.FC<Props> = ({ network, balance, address }) => {
       <Card className={`bg-${NETWORK_CONFIGS[network].color}`}>
         <a href={generateBlockscoutAddressLink(network, address)}>
           <CardHeader>
-            <CardDescription>{network}</CardDescription>
+            <CardDescription className="text-white">{network}</CardDescription>
             <CardTitle>
               {Math.round(
                 parseFloat(ethers.formatEther(balance || "0")) * 10000

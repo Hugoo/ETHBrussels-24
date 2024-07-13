@@ -9,7 +9,7 @@ const Profile: React.FC<Props> = ({ address }) => {
   // const { data: avatar } = useEnsAvatar({ name });
 
   return (
-    <div className="flex items-center gap-2">
+    <div className="flex items-center gap-2 my-12">
       <img
         alt="avatar"
         src={"https://docs.ens.domains/fallback.svg"}
