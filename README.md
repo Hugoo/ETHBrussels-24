@@ -24,13 +24,14 @@ Supported API calls:
 ## Architecture
 
 ```mermaid
-flowchart LR
-  B1[Blockscout Ethereum] --> P{PolyScout\n Merge }
-  B2[Blockscout Optimism] --> P
-  B3[Blockscout LUKSO] --> P
-  B4[Blockscout Base] --> P
-  BN[Blockscout Network N...] --> P
-  P -- Yes --> C[Multichain API 😇]
+flowchart RL
+  P{PolyScout\n Merge } -- GET --> B1[Blockscout Ethereum]
+
+  P -- GET --> B2[Blockscout Optimism]
+  P -- GET --> B3[Blockscout LUKSO]
+  P -- GET --> B4[Blockscout Base]
+  P -- GET --> BN[Blockscout Network N...]
+  C[Multichain API 😇] -- GET -->  P
 ```
 
 Source: [`src/services/blockscout.ts`](./src/services/blockscout.ts)

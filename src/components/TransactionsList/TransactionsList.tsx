@@ -48,12 +48,20 @@ const TransactionsList: React.FC<Props> = ({ transactions }) => {
                 </Link>
               </TableCell>
               <TableCell>
-                <Link href={`/address/${tx.from.hash}`} target="_blank">
+                <Link
+                  className="hover:underline"
+                  href={`/address/${tx.from.hash}`}
+                  target="_blank"
+                >
                   <AddressFormat address={tx.from.hash} />
                 </Link>
               </TableCell>
               <TableCell>
-                <Link href={`/address/${tx.to?.hash}`} target="_blank">
+                <Link
+                  className="hover:underline"
+                  href={`/address/${tx.to?.hash}`}
+                  target="_blank"
+                >
                   <AddressFormat address={tx.to?.hash} />
                 </Link>
               </TableCell>
