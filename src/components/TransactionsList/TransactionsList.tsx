@@ -15,6 +15,7 @@ import { getLatestBlockscoutTransactionsForAllNetworks } from "@/services/blocks
 import { generateBlockscoutTransactionLink } from "@/services/utils";
 import { BlockscoutTransactionApiResponse } from "@/types/blockscout/api";
 import { Network } from "@/constants";
+import Heading from "../Heading";
 
 const TransactionsList: React.FC = () => {
   const [transactions, setTransactions] = useState<
@@ -31,9 +32,9 @@ const TransactionsList: React.FC = () => {
 
   return (
     <div>
-      <h1 className="text-h1">
+      <Heading level={1}>
         Latest Transactions - <i>on many chains ✨</i>
-      </h1>
+      </Heading>
 
       <Table>
         <TableCaption>A list of recent transactions.</TableCaption>

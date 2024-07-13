@@ -18,6 +18,10 @@ Supported API calls:
 - `/addresses/{address}`
 - `/transactions`
 
+## Improvements
+
+- Improve cache and loading by using Tanstack Query
+
 ## Built with
 
 - [Blockscout API](https://docs.blockscout.com/for-users/api)
