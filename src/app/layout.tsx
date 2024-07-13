@@ -1,8 +1,7 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+import "./globals.css";
+import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -16,7 +15,48 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={inter.className}>{children}</body>
+      <body>
+        <header>
+          <div className="relative mx-auto max-w-screen-xl px-4 py-2 sm:px-6 sm:py-4 lg:px-8 bg-blue-300">
+            <div className="flex items-center justify-center">
+              <div className="grow text-center">
+                <h1 className="text-3xl font-bold text-lukso-fuschia hover:text-pink-700">
+                  <Link href="/">🔎 MultiScout</Link>
+                </h1>
+              </div>
+              <div className="text-left text-gray-400">-</div>
+            </div>
+          </div>
+        </header>
+        <main className="mx-auto max-w-screen-xl px-4 py-2 sm:px-6 sm:py-4 lg:px-8">
+          {children}
+        </main>
+        <footer className="bg-white">
+          <div className="mx-auto max-w-screen-xl px-4 pb-8 pt-12 sm:px-6 lg:px-8">
+            <div className="mt-16 border-t border-gray-100 pt-8">
+              <p className="text-center text-xs/relaxed text-gray-500">
+                <a
+                  className="hover:underline"
+                  href="https://ethglobal.com/events/brussels"
+                >
+                  🇧🇪 ETHGlobal Brussels 2024
+                </a>{" "}
+                &mdash; Built by Ola &amp;{" "}
+                <a className="hover:underline" href="https://x.com/HugoApps">
+                  @HugoApps
+                </a>{" "}
+                &mdash;{" "}
+                <a
+                  className="hover:underline"
+                  href="https://github.com/Hugoo/ETHBrussels-24"
+                >
+                  Source
+                </a>
+              </p>
+            </div>
+          </div>
+        </footer>
+      </body>
     </html>
   );
 }
